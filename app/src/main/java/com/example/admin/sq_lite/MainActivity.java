@@ -15,9 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText name,address;
     Button save,delete;
     SQLiteDatabase db;
-
-    int a;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
