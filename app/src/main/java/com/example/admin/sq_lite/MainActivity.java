@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button save,delete;
     SQLiteDatabase db;
 
+    int a;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         save.setOnClickListener(this);
         delete.setOnClickListener(this);
 
-        db = openOrCreateDatabase("school", Context.MODE_PRIVATE,null);
+        db = openOrCreateDatabase("school", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS student(name VARCHAR, address VARCHAR);");
     }
 
@@ -46,9 +48,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btnDelete:
-                Cursor c = db.rawQuery("SELECT * FROM student WHERE name='"+name.getText()+"'", null);
+                Cursor c = db.rawQuery("SELECT * FROM student WHERE name='" +name.getText()+ "'", null);
+
                 if(c.moveToFirst()){
-                    db.execSQL("DELETE FROM student WHERE name='"+name.getText()+"'");
+                    db.execSQL("DELETE FROM student WHERE name='" +name.getText()+ "'");
                     Toast.makeText(getApplicationContext(),"record deleted",Toast.LENGTH_LONG).show();
                 }
                 break;
